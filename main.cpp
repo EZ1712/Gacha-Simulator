@@ -3,9 +3,9 @@
 
 using namespace std;
 
-void item(int pull) {
+void item() {
 
-    cout << endl << pull << " ";
+    int pull = rand() % 100;
 
     if ( pull >= 90) {
         cout << "SUPER RARE" << endl;
@@ -18,56 +18,62 @@ void item(int pull) {
     cout << endl;
 }
 
+void exit() {
+    cout << "\n<==========> EXIT <==========>" << endl;
+}
 
 int main() {
 
     int pity = 80;
     char gacha, menu;
-    int pull = rand();
+    int count = 0;
 
-    cout << "=====>  Gacha Simulator  <=====" << endl;
-    cout << "selamat datang di gacha simulator, program untuk latihan keberuntungan" << endl;
+    cout << "\n<====================>  Gacha Simulator  <====================> \n\n";
+    cout << "selamat datang di gacha simulator, program untuk latihan keberuntungan" << endl << endl;
     
     do {
-        cout << "apakah anda ingin gacha (y/n) : ";
+        cout << "apakah anda siap gacha? (y/n) : ";
         cin >> menu;
 
         if (menu != 'y' && menu != 'n') {
-            cout << "input invalid" << endl;
+            cout << "\n<=====> Input Invalid <=====>\n" << endl;
         }
     } while ( menu != 'y' && menu !='n');
 
     if (menu == 'y') {
-        cout  << "sudah saatnya gacha" << endl;
 
         cout << "mulai gacha (y/n) : ";
         cin >> gacha;
 
-        while (gacha == 'y') {
-            cout << "pity = " << pity << endl;
-            cout << "gacha lagi (y/n) : ";
-            cin >> gacha;
+        if (gacha == 'y') {
 
-            cout << pull << endl;
-            // cout << rand();
-            // item(pull);
+            do {
+                cout << "=========================" << endl;
+                cout << "pity = " << pity << " || " << "gacha ke-" << count << endl << endl;
 
-            pity--;
+                cout << "result =====>  ";
+                item();
+                
+                cout << "=========================" << endl;
+                cout << "gacha lagi (y/n) : ";
+                cin >> gacha;
+
+                pity--;
+                count++;
+
+                if (pity <= 0) {
+                    pity += 80;
+                }
+                
+            } while (gacha == 'y');
+
+            exit();
+        } else {
+            exit();
         }
 
-        // do {
-        //     cout << "pity = " << pity << endl;
-        //     cout << "gacha (y/n)";
-        //     cin >> gacha;
-
-            
-
-        //     pity--;
-        // } while ( gacha == 'y');
-
-        cout << "sudahan" << endl;
     } else {
-        cout << "silahkan keluar" << endl;
+       exit();
     }
 
     return 0;
