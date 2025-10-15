@@ -3,17 +3,27 @@
 
 using namespace std;
 
-int pull() {
-    int pull;
-    pull = rand() % 100;
-    return pull;
+void item(int pull) {
 
+    cout << endl << pull << " ";
+
+    if ( pull >= 90) {
+        cout << "SUPER RARE" << endl;
+    } else if ( pull >= 70 ) {
+        cout << "RARE" << endl;
+    }  else {
+        cout << "COMMON" << endl;
+    }
+
+    cout << endl;
 }
+
 
 int main() {
 
     int pity = 80;
     char gacha, menu;
+    int pull = rand();
 
     cout << "=====>  Gacha Simulator  <=====" << endl;
     cout << "selamat datang di gacha simulator, program untuk latihan keberuntungan" << endl;
@@ -30,7 +40,6 @@ int main() {
     if (menu == 'y') {
         cout  << "sudah saatnya gacha" << endl;
 
-        cout << "pity = " << pity << endl;
         cout << "mulai gacha (y/n) : ";
         cin >> gacha;
 
@@ -39,7 +48,9 @@ int main() {
             cout << "gacha lagi (y/n) : ";
             cin >> gacha;
 
-            cout << pull() << endl;
+            cout << pull << endl;
+            // cout << rand();
+            // item(pull);
 
             pity--;
         }
